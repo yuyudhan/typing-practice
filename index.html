@@ -1,0 +1,101 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Character Typing Practice</title>
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Keymap JavaScript -->
+        <script src="keymap.js"></script>
+        <!-- Main Script -->
+        <script src="script.js" defer></script>
+        <style>
+body {
+    @apply bg-gray-100;
+}
+        /* Animation Classes */
+        .animate-out {
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            transform: translateX(-50px);
+            opacity: 0;
+        }
+        .animate-in {
+            transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .hidden {
+            display: none;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="flex flex-col min-h-screen">
+            <!-- Main Content -->
+            <div class="flex flex-1">
+                <!-- Center Area -->
+                <div class="flex-1 flex flex-col items-center justify-center relative">
+                    <div id="current-character" class="text-6xl font-bold mb-4 animate-in">A</div>
+                    <!-- Instruction Display -->
+                    <div id="press-instruction" class="mt-4 bg-white bg-opacity-90 p-4 rounded shadow-md">
+                        <h3 class="text-lg font-semibold mb-2 text-center">How to Press:</h3>
+                        <p id="instruction-text" class="text-gray-700 text-center">Left pinky finger</p>
+                    </div>
+                    <!-- Input Box -->
+                    <input type="text" id="char-input" maxlength="1" class="mt-6 border border-gray-300 rounded px-4 py-2 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 w-24 text-center" placeholder="Type Here" autofocus>
+                </div>
+                <!-- Sidebar for Counters -->
+                <div class="w-1/4 bg-white shadow-md p-6">
+                    <h2 class="text-2xl font-semibold mb-4">Stats</h2>
+                    <div class="mb-4">
+                        <span class="text-green-600 font-bold">Correct: </span><span id="correct-count">0</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-red-600 font-bold">Wrong: </span><span id="wrong-count">0</span>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="text-xl font-semibold mb-2">Median Typing Time (ms)</h3>
+                        <div>
+                            <span class="font-semibold">Letters:</span> <span id="median-letters">0</span>
+                        </div>
+                        <div>
+                            <span class="font-semibold">Numbers:</span> <span id="median-numbers">0</span>
+                        </div>
+                        <div>
+                            <span class="font-semibold">Special Characters:</span> <span id="median-special">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Frequency Inputs -->
+            <div class="bg-white shadow-inner p-6">
+                <h2 class="text-2xl font-semibold mb-4">Set Frequencies</h2>
+                <div class="flex space-x-4 justify-start">
+                    <!-- Characters Slider -->
+                    <div class="w-1/4">
+                        <label for="freq-characters" class="block text-gray-700">Characters (a-z, A-Z): <span id="freq-characters-value" class="font-semibold">50</span></label>
+                        <input type="range" id="freq-characters" min="0" max="100" value="50" class="mt-2 w-full">
+                    </div>
+                    <!-- Numbers Slider -->
+                    <div class="w-1/4">
+                        <label for="freq-numbers" class="block text-gray-700">Numbers (0-9): <span id="freq-numbers-value" class="font-semibold">30</span></label>
+                        <input type="range" id="freq-numbers" min="0" max="100" value="30" class="mt-2 w-full">
+                    </div>
+                    <!-- Special Characters Slider -->
+                    <div class="w-1/4">
+                        <label for="freq-special" class="block text-gray-700">Special Characters: <span id="freq-special-value" class="font-semibold">20</span></label>
+                        <input type="range" id="freq-special" min="0" max="100" value="20" class="mt-2 w-full">
+                    </div>
+                    <!-- Update Button -->
+                    <div class="flex items-end">
+                        <button id="update-frequencies" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

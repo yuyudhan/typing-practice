@@ -4,6 +4,8 @@
 
 Typing Practice is a simple web application designed to help users improve their blind touch typing skills. The application displays one character at a time along with instructions on which finger and shift key to use. Users type the displayed character, and the application provides real-time feedback on their performance.
 
+## Try out [Typing Practice](https://yuyudhan.github.io/typing-practice/)
+
 ## Features
 
 - **Character Display**: Shows a random character (letters, numbers, or special characters).
